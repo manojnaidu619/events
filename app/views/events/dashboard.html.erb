@@ -6,5 +6,6 @@
  <h1><%= event.name %></h1>
  <h3><%= event.description %></h3>
  <%= image_tag event.image.url(:medium) %><br>
- <%= link_to "Edit", edit_event_path(event) %>
+ <%= link_to "Edit", edit_event_path(event) %> |
+ <%= link_to "Destroy", event_path(event), method: :delete, data:{confirm: "Are you sure?"} %>
 <% end %>
