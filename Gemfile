@@ -30,7 +30,7 @@ gem 'hirb'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem "paperclip", "~> 6.0.0"
-
+gem 'dotenv-rails', groups: [:development, :test]
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'semantic-ui-sass'

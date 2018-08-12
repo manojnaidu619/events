@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   def create
     @event = current_coordinator.events.build(event_params)
      if @event.save
+       UserMailer.new_event(@event).deliver_now
        redirect_to event_path(@event)
      else
        render 'new'
