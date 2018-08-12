@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   def create
     @event = current_coordinator.events.build(event_params)
      if @event.save
-       UserMailer.new_event(@event).deliver_now
+       MailJob.perform_later(@event)   # Active job to send mails
        redirect_to event_path(@event)
      else
        render 'new'
