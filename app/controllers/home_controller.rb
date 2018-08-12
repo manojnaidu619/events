@@ -3,5 +3,6 @@ class HomeController < ApplicationController
     if coordinator_signed_in?
       redirect_to dashboard_path
     end
+    @events = Event.all
   end
 end

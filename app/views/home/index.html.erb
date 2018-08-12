@@ -1,2 +1,6 @@
 <%= link_to "coordinator login", new_coordinator_session_path , style: "float: right"%>
-<h1>Welcome Page</h1>
+<h1 style="color: orange">Welcome Page</h1>
+<% @events.each do |event| %>
+ <h1><%= event.name %></h1>
+ <h3><%= event.description %></h3><hr>
+<% end %>
