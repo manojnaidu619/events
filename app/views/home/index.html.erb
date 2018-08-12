@@ -3,5 +3,6 @@
 <% @events.each do |event| %>
  <h1><%= event.name %></h1>
  <h3><%= event.description %></h3>
- <%= image_tag event.image.url(:medium) %><hr>
+ <%= image_tag event.image.url(:medium) %><br>
+ by <%= event.coordinator.email %><hr>
 <% end %>
