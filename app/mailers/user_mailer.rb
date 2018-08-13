@@ -7,6 +7,6 @@ class UserMailer < ApplicationMailer
   #
   def new_event(event)
     @event = event
-    mail to: event.coordinator.email, subject: "New Event Notification!!"
+    mail to: event.coordinator.email, subject: "New Event Notification!!"   # This file is like a controller for sending emails
   end
 end

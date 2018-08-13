@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def dashboard
-    @events = current_coordinator.events
+    @events = current_coordinator.events      # Lists all Events Associated with the Co-ordinator
   end
 
   def new
@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   def create
     @event = current_coordinator.events.build(event_params)
      if @event.save
-       MailJob.perform_later(@event)   # Active job to send mails
+       #MailJob.perform_later(@event)   # Active job to send mails,Check Active jobs (jobs/mail_job.rb)
        redirect_to event_path(@event)
      else
        render 'new'
