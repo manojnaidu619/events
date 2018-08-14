@@ -1,4 +1,7 @@
 <h1><%= @event.name %></h1>
 <h3><%= @event.description %></h3><br>
+<% (0...@event.images.count).each do |image| %>               <!-- Displaying Uploaded image look at models/event.rb -->
+   <%= image_tag (@event.small(image)) %><br>             <!-- Images display after resizing models/event.rb -> small method -->
+ <% end %>
 
 <%= link_to 'Home', root_path %>

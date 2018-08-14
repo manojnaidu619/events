@@ -6,8 +6,8 @@
 <% @events.each do |event| %>                       <!-- Looping through @event collection object -->
  <h1><%= event.name %></h1>
  <h3><%= event.description %></h3>
-  <% (0...event.images.count).each do |image| %>               <!-- Displaying Uploaded image look at models/event.rb -->
-    <%= image_tag (event.small(image)) %><br>
+ <% (0...event.images.count).each do |image| %>               <!-- Displaying Uploaded image look at models/event.rb -->
+    <%= image_tag (event.small(image)) %><br>             <!-- Images display after resizing models/event.rb -> small method -->
   <% end %>
  <%= link_to "Edit", edit_event_path(event) %> |
  <%= link_to "Destroy", event_path(event), method: :delete, data:{confirm: "Are you sure?"} %>  <!-- Destroy data alert  -->

@@ -6,6 +6,6 @@ class Event < ApplicationRecord
  has_many_attached :images        # Defining activestorage with a namespace
 
  def small(input)                                     # Method that returns the image
-   self.images[input].variant(resize: "300x300").processed           # Resizing the image and return it
+   self.images[input].variant(resize: "300x300").processed        # Resizing the image and return it
  end
 end

@@ -39,7 +39,7 @@ class EventsController < ApplicationController
      def destroy
        @event = Event.find(params[:id])
        @event.destroy
-       @event.image.purge                 # Deleting Image file inside the Active Storage blob table
+       @event.images.purge                 # Deleting Image file inside the Active Storage blob table
        redirect_to root_path
      end
 
