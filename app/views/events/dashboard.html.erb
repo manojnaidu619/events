@@ -1,11 +1,14 @@
 <% if coordinator_signed_in? %>
  <%= link_to "Signout", destroy_coordinator_session_path, method: :delete %>     <!-- Session Destroy of Co-ordinator -->
  | <%= link_to 'New Event', new_event_path %>
+ | <%= link_to "Edit Account", edit_coordinator_registration_path %>
  <% end %>
 <% @events.each do |event| %>                       <!-- Looping through @event collection object -->
  <h1><%= event.name %></h1>
  <h3><%= event.description %></h3>
- <%= image_tag event.small_image %><br>                      <!-- Displaying Uploaded image look at models/event.rb -->
+  <% (0...event.images.count).each do |image| %>               <!-- Displaying Uploaded image look at models/event.rb -->
+    <%= image_tag (event.small(image)) %><br>
+  <% end %>
  <%= link_to "Edit", edit_event_path(event) %> |
- <%= link_to "Destroy", event_path(event), method: :delete, data:{confirm: "Are you sure?"} %>  <!-- Session Destroy alert  -->
+ <%= link_to "Destroy", event_path(event), method: :delete, data:{confirm: "Are you sure?"} %>  <!-- Destroy data alert  -->
 <% end %>

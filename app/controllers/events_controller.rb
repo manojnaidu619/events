@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   def create
     @event = current_coordinator.events.build(event_params)
      if @event.save
-       #MailJob.perform_later(@event)   # Active job to send mails,Check Active jobs (jobs/mail_job.rb)
+       #MailJob.perform_later(@event)         # Active job to send mails,Check Active jobs (jobs/mail_job.rb)
        redirect_to event_path(@event)
      else
        render 'new'
@@ -39,12 +39,13 @@ class EventsController < ApplicationController
      def destroy
        @event = Event.find(params[:id])
        @event.destroy
+       @event.image.purge                 # Deleting Image file inside the Active Storage blob table
        redirect_to root_path
      end
 
      private
 
      def event_params
-       params.require(:event).permit(:name, :description, :coordinator_id, :image)
+       params.require(:event).permit(:name, :description, :coordinator_id, images: [] )   # whitelisting parameters, images accepting multiple file uploads in to array
      end
 end
